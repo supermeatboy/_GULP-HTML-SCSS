@@ -1,0 +1,33 @@
+//fonts
+$Arial: Arial, Helvetica, sans-serif;
+
+//  Colors
+$white: #fff;
+$gray: #d3cfcd;
+$blue: #102e6a;
+$black: #000;
+
+//  Body
+$body: (
+	line-height: 1.45,
+	font-family: $Arial,
+	max-font-size: 17px,
+	min-font-size: 15px,
+	font-weight: normal,
+
+	color: $black,
+	background-color: $white,
+
+) !default;
+
+// Media
+/*
+.example{
+	font-size: 20px;
+	color: red;
+	@include media('>1200'){
+		color: blue;
+		font-size: 30px;
+	}
+}*/
+$breakpoints: ('1200': 1200px, '992': 992px, '768': 768px, '480': 480px);

@@ -1,0 +1,237 @@
+@import "../../node_modules/include-media/dist/include-media";
+@import "fonts";
+@import "vars";
+@import "mixins";
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    &:before, &:after {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+html{
+	$max-font-size: map_get($body, max-font-size);
+	$min-font-size: map_get($body, min-font-size);
+
+	height: 100%;
+	@include responsive-font(vw($max-font-size), $min-font-size, $max-font-size);
+}
+
+body {
+	font: 400 14px/1 $Arial;
+	min-width: 320px;
+	position: relative;
+	overflow-x: hidden;
+	height: 100%;
+	color: #333;
+	opacity: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+a {
+    transition: all .3s;
+    display: inline-block;
+    color: #333;
+    text-decoration: none;
+    &:hover,
+    &:active {
+        color: #333;
+    }
+    &.disabled {
+        color: #333;
+        pointer-events: none;
+        cursor: default;
+        text-decoration: none;
+    }
+}
+
+button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+a,
+input,
+button,
+textarea,
+select {
+    outline: none;
+    border: none;
+    -webkit-appearance: none;
+    &:focus {
+        outline: none;
+    }
+}
+
+ol, ul {
+    list-style: none;
+}
+input[type="number"] {
+	-webkit-appearance: textfield;
+	-moz-appearance: textfield;
+	appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+}
+
+[data-svg] {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.svg {
+    display: inline-block;
+    transition: all .3s;
+    height: rem(20px);
+    width: rem(20px);
+}
+
+.wrapper {
+    position: relative;
+    flex: 1 0;
+}
+
+main.content {
+    position: relative;
+    display: block;
+}
+//header
+.header{
+    position: absolute;
+    z-index: 888;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    transition: all .3s;
+    background-color: rgba(255,255,255,1);
+    &.fixed{
+        position: fixed;
+        background-color: #fff;
+        box-shadow: 0 0 10px 0 rgba(0,0,0,.3);
+    }
+    &__toggle-menu{
+        display: none;
+        position: relative;
+        cursor: pointer;
+        span {
+            display: block;
+            width: 35px;
+            height: 3px;
+            background: #333;
+            margin: 5px 0;
+            transform: rotate(0deg);
+            transition: .5s all ease;
+            opacity: 1;
+            &:nth-child(1) {
+                .menu-open &{
+                    background: #333;
+                    transform: rotate(45deg) translateY(11px);
+                }
+            }
+            &:nth-child(2) {
+                .menu-open &{
+                    opacity: 0;
+                }
+            }
+            &:nth-child(3) {
+                .menu-open &{
+                    background: #333;
+                    transform: rotate(-45deg) translateY(-11px);
+                }
+            }
+        }
+    }
+}
+.logo{
+    display: block;
+}
+.footer{
+    position: relative;
+    z-index: 999;
+    height: 60px;
+    flex: 0 0 60px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+    background-color: #000;
+    padding: 0 60px;
+    color: #fff;
+}
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 rem(15px);
+}
+
+section {
+    position: relative;
+}
+[data-thumb] {
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #fff;
+    background-size: 100%;
+    position: relative;
+    overflow: hidden;
+    transition: all .3s;
+    width: 100%;
+    img {
+        display: block;
+        opacity: 0;
+        width: 100%;
+    }
+    &.hover-zoom {
+        &:hover {
+            background-size: 110%;
+        }
+    }
+}
+
+.btn {
+	border: 1px solid transparent;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	cursor: pointer;
+	font-weight: 400;
+	padding: 0 rem(15px);
+	height: rem(50px);
+	font-size: rem(14px);
+	line-height: 1;
+	transition: all .3s;
+	outline: none;
+	box-shadow: none;
+	min-width: rem(220px);
+	text-decoration: none;
+	text-transform: uppercase;
+	&--wrap {
+		display: block;
+	}
+	&--dark {
+		background-color: #333;
+		border-color: #333;
+		color: #ccc;
+		&:hover {
+			background-color: #fff;
+			color: #333;
+		}
+	}
+}
